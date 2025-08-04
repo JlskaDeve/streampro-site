@@ -58,10 +58,24 @@
             overflow: hidden;
             cursor: pointer;
             transition: transform 0.3s ease;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
         
         .carousel-item:hover {
             transform: scale(1.05);
+        }
+
+        .loading {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
         }
     </style>
 </head>
@@ -115,8 +129,6 @@
                 </button>
             </div>
             
-            
-            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
                 <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 card-hover">
                     <i class="fas fa-tv text-red-400 text-3xl mx-auto mb-4 block"></i>
@@ -147,7 +159,7 @@
             
             <div class="bg-gradient-to-r from-red-600 to-red-800 rounded-2xl p-8 max-w-2xl mx-auto mb-12">
                 <h3 class="text-3xl font-bold text-white mb-4">Com a nossa plataforma</h3>
-                <p class="text-4xl font-bold text-white mb-6">você pagará apenas <span class="text-yellow-300">R$ 25,00*</span> no primeiro mês!!</p>
+                <p class="text-4xl font-bold text-white mb-6">você pagará apenas <span class="text-yellow-300">R$ 25,00</span> mês!!</p>
                 <button class="bg-white text-red-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors">
                     QUERO MEU ACESSO!
                 </button>
@@ -156,7 +168,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
                 <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 card-hover">
                     <h4 class="text-white font-bold text-xl mb-2">Mensal</h4>
-                    <p class="text-3xl font-bold text-red-400 mb-2">R$ 25,00*</p>
+                    <p class="text-3xl font-bold text-red-400 mb-2">R$ 25,00</p>
                     <p class="text-gray-300 text-sm">primeiro mês</p>
                 </div>
                 <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 card-hover">
@@ -194,170 +206,12 @@
                 <div class="carousel-container" id="carousel">
                     <!-- Row 1 - Filmes -->
                     <div class="carousel-row" id="row1">
-                        <div class="carousel-item bg-gradient-to-br from-blue-400 to-blue-600 shadow-lg">
-                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
-                                <div class="p-4">
-                                    <h3 class="text-white font-bold text-lg">Godzilla Minus One</h3>
-                                    <p class="text-gray-300 text-sm">Filme • 2023</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item bg-gradient-to-br from-yellow-500 to-orange-600 shadow-lg">
-                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
-                                <div class="p-4">
-                                    <h3 class="text-white font-bold text-lg">The Beekeeper</h3>
-                                    <p class="text-gray-300 text-sm">Filme • 2024</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg">
-                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
-                                <div class="p-4">
-                                    <h3 class="text-white font-bold text-lg">Meu Malvado Favorito</h3>
-                                    <p class="text-gray-300 text-sm">Animação • 2010</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item bg-gradient-to-br from-orange-600 to-red-800 shadow-lg">
-                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
-                                <div class="p-4">
-                                    <h3 class="text-white font-bold text-lg">The Batman</h3>
-                                    <p class="text-gray-300 text-sm">Filme • 2022</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item bg-gradient-to-br from-gray-700 to-black shadow-lg">
-                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
-                                <div class="p-4">
-                                    <h3 class="text-white font-bold text-lg">365 Dias</h3>
-                                    <p class="text-gray-300 text-sm">Filme • 2020</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item bg-gradient-to-br from-purple-600 to-red-600 shadow-lg">
-                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
-                                <div class="p-4">
-                                    <h3 class="text-white font-bold text-lg">Shang-Chi</h3>
-                                    <p class="text-gray-300 text-sm">Filme • 2021</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item bg-gradient-to-br from-blue-400 to-blue-600 shadow-lg">
-                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
-                                <div class="p-4">
-                                    <h3 class="text-white font-bold text-lg">Velozes e Furiosos</h3>
-                                    <p class="text-gray-300 text-sm">Filme • 2023</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item bg-gradient-to-br from-green-500 to-green-700 shadow-lg">
-                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
-                                <div class="p-4">
-                                    <h3 class="text-white font-bold text-lg">Avatar 2</h3>
-                                    <p class="text-gray-300 text-sm">Filme • 2022</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item bg-gradient-to-br from-red-600 to-red-800 shadow-lg">
-                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
-                                <div class="p-4">
-                                    <h3 class="text-white font-bold text-lg">Top Gun Maverick</h3>
-                                    <p class="text-gray-300 text-sm">Filme • 2022</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item bg-gradient-to-br from-yellow-600 to-orange-700 shadow-lg">
-                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
-                                <div class="p-4">
-                                    <h3 class="text-white font-bold text-lg">Black Panther 2</h3>
-                                    <p class="text-gray-300 text-sm">Filme • 2022</p>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- Filmes serão carregados aqui -->
                     </div>
                     
                     <!-- Row 2 - Séries -->
                     <div class="carousel-row mt-6" id="row2">
-                        <div class="carousel-item bg-gradient-to-br from-gray-400 to-gray-600 shadow-lg">
-                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
-                                <div class="p-4">
-                                    <h3 class="text-white font-bold text-lg">Start-Up</h3>
-                                    <p class="text-gray-300 text-sm">Série • 2020</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item bg-gradient-to-br from-blue-600 to-blue-800 shadow-lg">
-                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
-                                <div class="p-4">
-                                    <h3 class="text-white font-bold text-lg">Kara Sevda</h3>
-                                    <p class="text-gray-300 text-sm">Série • 2015</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item bg-gradient-to-br from-yellow-600 to-orange-700 shadow-lg">
-                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
-                                <div class="p-4">
-                                    <h3 class="text-white font-bold text-lg">Cobra Kai</h3>
-                                    <p class="text-gray-300 text-sm">Série • 2018</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item bg-gradient-to-br from-green-500 to-green-700 shadow-lg">
-                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
-                                <div class="p-4">
-                                    <h3 class="text-white font-bold text-lg">Bridgerton</h3>
-                                    <p class="text-gray-300 text-sm">Série • 2020</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item bg-gradient-to-br from-red-600 to-red-800 shadow-lg">
-                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
-                                <div class="p-4">
-                                    <h3 class="text-white font-bold text-lg">Stranger Things 4</h3>
-                                    <p class="text-gray-300 text-sm">Série • 2022</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item bg-gradient-to-br from-orange-600 to-red-700 shadow-lg">
-                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
-                                <div class="p-4">
-                                    <h3 class="text-white font-bold text-lg">House of the Dragon</h3>
-                                    <p class="text-gray-300 text-sm">Série • 2022</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item bg-gradient-to-br from-red-700 to-red-900 shadow-lg">
-                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
-                                <div class="p-4">
-                                    <h3 class="text-white font-bold text-lg">The Boys</h3>
-                                    <p class="text-gray-300 text-sm">Série • 2019</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item bg-gradient-to-br from-purple-600 to-purple-800 shadow-lg">
-                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
-                                <div class="p-4">
-                                    <h3 class="text-white font-bold text-lg">Wednesday</h3>
-                                    <p class="text-gray-300 text-sm">Série • 2022</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item bg-gradient-to-br from-blue-500 to-blue-700 shadow-lg">
-                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
-                                <div class="p-4">
-                                    <h3 class="text-white font-bold text-lg">The Last of Us</h3>
-                                    <p class="text-gray-300 text-sm">Série • 2023</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item bg-gradient-to-br from-gray-600 to-gray-800 shadow-lg">
-                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
-                                <div class="p-4">
-                                    <h3 class="text-white font-bold text-lg">The Mandalorian</h3>
-                                    <p class="text-gray-300 text-sm">Série • 2019</p>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- Séries serão carregadas aqui -->
                     </div>
                 </div>
             </div>
@@ -490,6 +344,115 @@
     </footer>
 
     <script>
+        // TMDB API Configuration
+        const TMDB_API_KEY = '8c247ea0b4b56ed2ff7d41c9a833aa77'; // API key pública para demonstração
+        const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
+        const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
+
+        // Lista de filmes e séries
+        const movies = [
+            { title: 'Godzilla Minus One', year: 2023, type: 'movie' },
+            { title: 'The Beekeeper', year: 2024, type: 'movie' },
+            { title: 'Despicable Me', year: 2010, type: 'movie' }, // Meu Malvado Favorito
+            { title: 'The Batman', year: 2022, type: 'movie' },
+            { title: '365 Days', year: 2020, type: 'movie' }
+        ];
+
+        const series = [
+            { title: 'Start-Up', year: 2020, type: 'tv' },
+            { title: 'Kara Sevda', year: 2015, type: 'tv' },
+            { title: 'Cobra Kai', year: 2018, type: 'tv' },
+            { title: 'Bridgerton', year: 2020, type: 'tv' },
+            { title: 'Stranger Things', year: 2016, type: 'tv' }
+        ];
+
+        // Função para buscar filme/série na API
+        async function searchContent(title, year, type) {
+            try {
+                const response = await fetch(`${TMDB_BASE_URL}/search/${type}?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(title)}&year=${year}`);
+                const data = await response.json();
+                
+                if (data.results && data.results.length > 0) {
+                    const result = data.results[0];
+                    return {
+                        title: result.title || result.name,
+                        poster: result.poster_path ? `${TMDB_IMAGE_BASE_URL}${result.poster_path}` : null,
+                        year: result.release_date ? result.release_date.split('-')[0] : year
+                    };
+                }
+            } catch (error) {
+                console.error('Erro ao buscar:', error);
+            }
+            return null;
+        }
+
+        // Função para criar item do carrossel
+        function createCarouselItem(content, type) {
+            const item = document.createElement('div');
+            item.className = 'carousel-item loading';
+            
+            if (content && content.poster) {
+                item.style.backgroundImage = `url(${content.poster})`;
+                item.classList.remove('loading');
+            } else {
+                // Fallback para gradiente se não encontrar imagem
+                const gradients = [
+                    'linear-gradient(to bottom right, #60a5fa, #2563eb)',
+                    'linear-gradient(to bottom right, #eab308, #ea580c)',
+                    'linear-gradient(to bottom right, #3b82f6, #8b5cf6)',
+                    'linear-gradient(to bottom right, #ea580c, #dc2626)',
+                    'linear-gradient(to bottom right, #4b5563, #000000)'
+                ];
+                const randomGradient = gradients[Math.floor(Math.random() * gradients.length)];
+                item.style.background = randomGradient;
+                item.classList.remove('loading');
+            }
+            
+            const overlay = document.createElement('div');
+            overlay.className = 'w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end';
+            
+            const textDiv = document.createElement('div');
+            textDiv.className = 'p-4';
+            
+            const title = document.createElement('h3');
+            title.className = 'text-white font-bold text-lg';
+            title.textContent = content ? content.title : 'Carregando...';
+            
+            const subtitle = document.createElement('p');
+            subtitle.className = 'text-gray-300 text-sm';
+            subtitle.textContent = content ? `${type === 'movie' ? 'Filme' : 'Série'} • ${content.year}` : 'Carregando...';
+            
+            textDiv.appendChild(title);
+            textDiv.appendChild(subtitle);
+            overlay.appendChild(textDiv);
+            item.appendChild(overlay);
+            
+            return item;
+        }
+
+        // Função para carregar o carrossel
+        async function loadCarousel() {
+            const row1 = document.getElementById('row1');
+            const row2 = document.getElementById('row2');
+            
+            // Carregar filmes
+            for (const movie of movies) {
+                const content = await searchContent(movie.title, movie.year, movie.type);
+                const item = createCarouselItem(content, 'movie');
+                row1.appendChild(item);
+            }
+            
+            // Carregar séries
+            for (const serie of series) {
+                const content = await searchContent(serie.title, serie.year, serie.type);
+                const item = createCarouselItem(content, 'tv');
+                row2.appendChild(item);
+            }
+            
+            // Inicializar carrossel após carregar
+            initCarousel();
+        }
+
         // Smooth scrolling para links internos
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -524,102 +487,106 @@
         });
 
         // Carousel functionality
-        const carousel = document.getElementById('carousel');
-        const row1 = document.getElementById('row1');
-        const row2 = document.getElementById('row2');
-        
-        let isHovering = false;
-        let isDragging = false;
-        let startX = 0;
-        let currentTranslate = 0;
-        let prevTranslate = 0;
-        let animationId;
-        
-        // Hover to start/stop animation
-        carousel.addEventListener('mouseenter', () => {
-            isHovering = true;
-            startAutoScroll();
-        });
-        
-        carousel.addEventListener('mouseleave', () => {
-            isHovering = false;
-            stopAutoScroll();
-        });
-        
-        // Drag functionality
-        carousel.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            startX = e.clientX;
-            carousel.style.cursor = 'grabbing';
-            stopAutoScroll();
-        });
-        
-        carousel.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            e.preventDefault();
+        function initCarousel() {
+            const carousel = document.getElementById('carousel');
+            const row1 = document.getElementById('row1');
+            const row2 = document.getElementById('row2');
             
-            const currentX = e.clientX;
-            const diff = currentX - startX;
-            const moveX = diff * 0.5;
+            let isHovering = false;
+            let isDragging = false;
+            let startX = 0;
+            let currentTranslate = 0;
+            let prevTranslate = 0;
+            let animationId;
             
-            currentTranslate = prevTranslate + moveX;
-            
-            // Limit movement
-            if (currentTranslate > 0) currentTranslate = 0;
-            if (currentTranslate < -1000) currentTranslate = -1000;
-            
-            row1.style.transform = `translateX(${currentTranslate}px)`;
-            row2.style.transform = `translateX(${currentTranslate}px)`;
-        });
-        
-        carousel.addEventListener('mouseup', () => {
-            isDragging = false;
-            prevTranslate = currentTranslate;
-            carousel.style.cursor = 'grab';
-            
-            if (isHovering) {
+            // Hover to start/stop animation
+            carousel.addEventListener('mouseenter', () => {
+                isHovering = true;
                 startAutoScroll();
-            }
-        });
-        
-        carousel.addEventListener('mouseleave', () => {
-            if (isDragging) {
+            });
+            
+            carousel.addEventListener('mouseleave', () => {
+                isHovering = false;
+                stopAutoScroll();
+            });
+            
+            // Drag functionality
+            carousel.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.clientX;
+                carousel.style.cursor = 'grabbing';
+                stopAutoScroll();
+            });
+            
+            carousel.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                
+                const currentX = e.clientX;
+                const diff = currentX - startX;
+                const moveX = diff * 0.5;
+                
+                currentTranslate = prevTranslate + moveX;
+                
+                // Limit movement
+                if (currentTranslate > 0) currentTranslate = 0;
+                if (currentTranslate < -1000) currentTranslate = -1000;
+                
+                row1.style.transform = `translateX(${currentTranslate}px)`;
+                row2.style.transform = `translateX(${currentTranslate}px)`;
+            });
+            
+            carousel.addEventListener('mouseup', () => {
                 isDragging = false;
                 prevTranslate = currentTranslate;
                 carousel.style.cursor = 'grab';
-            }
-        });
-        
-        function startAutoScroll() {
-            if (animationId) return;
-            
-            let position = prevTranslate;
-            const speed = 0.5; // pixels per frame - mais lento
-            
-            function animate() {
-                position -= speed;
                 
-                // Reset position when reaching the end
-                if (position < -1000) {
-                    position = 0;
+                if (isHovering) {
+                    startAutoScroll();
+                }
+            });
+            
+            carousel.addEventListener('mouseleave', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    prevTranslate = currentTranslate;
+                    carousel.style.cursor = 'grab';
+                }
+            });
+            
+            function startAutoScroll() {
+                if (animationId) return;
+                
+                let position = prevTranslate;
+                const speed = 0.5; // pixels per frame - mais lento
+                
+                function animate() {
+                    position -= speed;
+                    
+                    // Reset position when reaching the end
+                    if (position < -1000) {
+                        position = 0;
+                    }
+                    
+                    row1.style.transform = `translateX(${position}px)`;
+                    row2.style.transform = `translateX(${position}px)`;
+                    
+                    animationId = requestAnimationFrame(animate);
                 }
                 
-                row1.style.transform = `translateX(${position}px)`;
-                row2.style.transform = `translateX(${position}px)`;
-                
-                animationId = requestAnimationFrame(animate);
+                animate();
             }
             
-            animate();
-        }
-        
-        function stopAutoScroll() {
-            if (animationId) {
-                cancelAnimationFrame(animationId);
-                animationId = null;
+            function stopAutoScroll() {
+                if (animationId) {
+                    cancelAnimationFrame(animationId);
+                    animationId = null;
+                }
             }
         }
+
+        // Carregar o carrossel quando a página carregar
+        document.addEventListener('DOMContentLoaded', loadCarousel);
     </script>
 </body>
-
 </html> 
