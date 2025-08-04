@@ -66,13 +66,13 @@
         .carousel-item:hover {
             transform: scale(1.05);
         }
-
+        
         .loading {
             background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
             background-size: 200% 100%;
             animation: loading 1.5s infinite;
         }
-
+        
         @keyframes loading {
             0% { background-position: 200% 0; }
             100% { background-position: -200% 0; }
@@ -349,21 +349,83 @@
         const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
         const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
-        // Lista de filmes e séries
+        // Lista de filmes atualizados (30 filmes)
         const movies = [
             { title: 'Godzilla Minus One', year: 2023, type: 'movie' },
             { title: 'The Beekeeper', year: 2024, type: 'movie' },
             { title: 'Despicable Me', year: 2010, type: 'movie' }, // Meu Malvado Favorito
             { title: 'The Batman', year: 2022, type: 'movie' },
-            { title: '365 Days', year: 2020, type: 'movie' }
+            { title: '365 Days', year: 2020, type: 'movie' },
+            { title: 'Shang-Chi', year: 2021, type: 'movie' },
+            { title: 'Fast X', year: 2023, type: 'movie' }, // Velozes e Furiosos
+            { title: 'Avatar: The Way of Water', year: 2022, type: 'movie' },
+            { title: 'Top Gun: Maverick', year: 2022, type: 'movie' },
+            { title: 'Black Panther: Wakanda Forever', year: 2022, type: 'movie' },
+            { title: 'The Super Mario Bros. Movie', year: 2023, type: 'movie' },
+            { title: 'Barbie', year: 2023, type: 'movie' },
+            { title: 'Oppenheimer', year: 2023, type: 'movie' },
+            { title: 'Mission: Impossible - Dead Reckoning', year: 2023, type: 'movie' },
+            { title: 'Spider-Man: Across the Spider-Verse', year: 2023, type: 'movie' },
+            { title: 'The Hunger Games: The Ballad of Songbirds & Snakes', year: 2023, type: 'movie' },
+            { title: 'Aquaman and the Lost Kingdom', year: 2023, type: 'movie' },
+            { title: 'Wonka', year: 2023, type: 'movie' },
+            { title: 'The Marvels', year: 2023, type: 'movie' },
+            { title: 'Napoleon', year: 2023, type: 'movie' },
+            { title: 'Killers of the Flower Moon', year: 2023, type: 'movie' },
+            { title: 'Poor Things', year: 2023, type: 'movie' },
+            { title: 'The Color Purple', year: 2023, type: 'movie' },
+            { title: 'Anyone But You', year: 2023, type: 'movie' },
+            { title: 'The Iron Claw', year: 2023, type: 'movie' },
+            { title: 'Ferrari', year: 2023, type: 'movie' },
+            { title: 'The Zone of Interest', year: 2023, type: 'movie' },
+            { title: 'American Fiction', year: 2023, type: 'movie' },
+            { title: 'Anatomy of a Fall', year: 2023, type: 'movie' },
+            { title: 'Past Lives', year: 2023, type: 'movie' },
+            { title: 'The Holdovers', year: 2023, type: 'movie' },
+            { title: 'May December', year: 2023, type: 'movie' },
+            { title: 'Origin', year: 2023, type: 'movie' }
         ];
 
+        // Lista de séries atualizadas (30 séries)
         const series = [
             { title: 'Start-Up', year: 2020, type: 'tv' },
             { title: 'Kara Sevda', year: 2015, type: 'tv' },
             { title: 'Cobra Kai', year: 2018, type: 'tv' },
             { title: 'Bridgerton', year: 2020, type: 'tv' },
-            { title: 'Stranger Things', year: 2016, type: 'tv' }
+            { title: 'Stranger Things', year: 2016, type: 'tv' },
+            { title: 'House of the Dragon', year: 2022, type: 'tv' },
+            { title: 'The Boys', year: 2019, type: 'tv' },
+            { title: 'Wednesday', year: 2022, type: 'tv' },
+            { title: 'The Last of Us', year: 2023, type: 'tv' },
+            { title: 'The Mandalorian', year: 2019, type: 'tv' },
+            { title: 'The Witcher', year: 2019, type: 'tv' },
+            { title: 'Money Heist', year: 2017, type: 'tv' },
+            { title: 'Squid Game', year: 2021, type: 'tv' },
+            { title: 'The Crown', year: 2016, type: 'tv' },
+            { title: 'Breaking Bad', year: 2008, type: 'tv' },
+            { title: 'Better Call Saul', year: 2015, type: 'tv' },
+            { title: 'Ozark', year: 2017, type: 'tv' },
+            { title: 'The Queen\'s Gambit', year: 2020, type: 'tv' },
+            { title: 'Euphoria', year: 2019, type: 'tv' },
+            { title: 'Succession', year: 2018, type: 'tv' },
+            { title: 'The White Lotus', year: 2021, type: 'tv' },
+            { title: 'Yellowstone', year: 2018, type: 'tv' },
+            { title: '1883', year: 2021, type: 'tv' },
+            { title: '1923', year: 2022, type: 'tv' },
+            { title: 'The Handmaid\'s Tale', year: 2017, type: 'tv' },
+            { title: 'The Morning Show', year: 2019, type: 'tv' },
+            { title: 'Ted Lasso', year: 2020, type: 'tv' },
+            { title: 'Severance', year: 2022, type: 'tv' },
+            { title: 'Andor', year: 2022, type: 'tv' },
+            { title: 'The Book of Boba Fett', year: 2021, type: 'tv' },
+            { title: 'Obi-Wan Kenobi', year: 2022, type: 'tv' },
+            { title: 'Moon Knight', year: 2022, type: 'tv' },
+            { title: 'Ms. Marvel', year: 2022, type: 'tv' },
+            { title: 'She-Hulk: Attorney at Law', year: 2022, type: 'tv' },
+            { title: 'Hawkeye', year: 2021, type: 'tv' },
+            { title: 'Loki', year: 2021, type: 'tv' },
+            { title: 'WandaVision', year: 2021, type: 'tv' },
+            { title: 'The Falcon and the Winter Soldier', year: 2021, type: 'tv' }
         ];
 
         // Função para buscar filme/série na API
