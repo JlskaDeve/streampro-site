@@ -561,6 +561,27 @@
             let prevTranslate = 0;
             let animationId;
             
+            // Duplicar itens para criar loop infinito
+            function duplicateItems() {
+                const items1 = row1.children;
+                const items2 = row2.children;
+                
+                // Duplicar filmes
+                for (let i = 0; i < items1.length; i++) {
+                    const clone = items1[i].cloneNode(true);
+                    row1.appendChild(clone);
+                }
+                
+                // Duplicar séries
+                for (let i = 0; i < items2.length; i++) {
+                    const clone = items2[i].cloneNode(true);
+                    row2.appendChild(clone);
+                }
+            }
+            
+            // Chamar duplicação após um pequeno delay para garantir que os itens foram carregados
+            setTimeout(duplicateItems, 1000);
+            
             // Hover to start/stop animation
             carousel.addEventListener('mouseenter', () => {
                 isHovering = true;
@@ -586,14 +607,11 @@
                 
                 const currentX = e.clientX;
                 const diff = currentX - startX;
-                const moveX = diff * 0.5;
+                const moveX = diff * 0.8; // Mais responsivo
                 
                 currentTranslate = prevTranslate + moveX;
                 
-                // Limit movement
-                if (currentTranslate > 0) currentTranslate = 0;
-                if (currentTranslate < -1000) currentTranslate = -1000;
-                
+                // Aplicar transform
                 row1.style.transform = `translateX(${currentTranslate}px)`;
                 row2.style.transform = `translateX(${currentTranslate}px)`;
             });
@@ -620,13 +638,14 @@
                 if (animationId) return;
                 
                 let position = prevTranslate;
-                const speed = 0.5; // pixels per frame - mais lento
+                const speed = 0.8; // Mais rápido e fluido
                 
                 function animate() {
                     position -= speed;
                     
-                    // Reset position when reaching the end
-                    if (position < -1000) {
+                    // Loop infinito - quando chegar ao final, volta ao início
+                    const totalWidth = row1.scrollWidth / 2; // Metade porque duplicamos os itens
+                    if (position < -totalWidth) {
                         position = 0;
                     }
                     
@@ -645,6 +664,13 @@
                     animationId = null;
                 }
             }
+            
+            // Iniciar auto-scroll automaticamente após um delay
+            setTimeout(() => {
+                if (!isHovering) {
+                    startAutoScroll();
+                }
+            }, 2000);
         }
 
         // Carregar o carrossel quando a página carregar
