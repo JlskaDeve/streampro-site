@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StreamPro - IPTV Premium</title>
+    <title>CineFlix - IPTV Premium</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -38,6 +38,7 @@
             gap: 1.5rem;
             cursor: grab;
             user-select: none;
+            overflow: hidden;
         }
         
         .carousel-container:active {
@@ -47,7 +48,8 @@
         .carousel-row {
             display: flex;
             gap: 1.5rem;
-            transition: transform 0.1s ease-out;
+            transition: transform 0.3s ease-out;
+            width: max-content;
         }
         
         .carousel-item {
@@ -77,6 +79,76 @@
             0% { background-position: 200% 0; }
             100% { background-position: -200% 0; }
         }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .film-reel {
+            width: 100%;
+            height: 100%;
+            border: 3px solid;
+            border-image: linear-gradient(45deg, #3b82f6, #ec4899) 1;
+            border-radius: 50%;
+            position: relative;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .film-reel::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0.8rem;
+            height: 0.8rem;
+            background: #ec4899;
+            clip-path: polygon(0 0, 0 100%, 100% 50%);
+        }
+
+        .sprocket-holes {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 1.5rem;
+            height: 1.5rem;
+            border: 2px solid #ec4899;
+            border-radius: 50%;
+        }
+
+        .sprocket-holes::before,
+        .sprocket-holes::after {
+            content: '';
+            position: absolute;
+            width: 0.3rem;
+            height: 0.3rem;
+            background: #ec4899;
+            border-radius: 50%;
+        }
+
+        .sprocket-holes::before {
+            top: -0.6rem;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .sprocket-holes::after {
+            bottom: -0.6rem;
+            left: 50%;
+            transform: translateX(-50%);
+        }
     </style>
 </head>
 <body class="hero-gradient min-h-screen">
@@ -84,9 +156,13 @@
     <header class="bg-black/20 backdrop-blur-sm border-b border-white/10 sticky top-0 z-50">
         <div class="container mx-auto px-4 py-4">
             <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-play text-red-500 text-2xl"></i>
-                    <span class="text-white font-bold text-xl">StreamPro</span>
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <div class="film-reel">
+                            <div class="sprocket-holes"></div>
+                        </div>
+                    </div>
+                    <span class="text-white font-bold text-xl">CineFlix</span>
                 </div>
                 
                 <nav class="hidden md:flex space-x-8">
@@ -327,8 +403,12 @@
     <footer class="bg-black/40 py-12 px-4">
         <div class="container mx-auto text-center">
             <div class="flex items-center justify-center space-x-2 mb-6">
-                <i class="fas fa-play text-red-500 text-2xl"></i>
-                <span class="text-white font-bold text-xl">StreamPro</span>
+                <div class="logo-icon">
+                    <div class="film-reel">
+                        <div class="sprocket-holes"></div>
+                    </div>
+                </div>
+                <span class="text-white font-bold text-xl">CineFlix</span>
             </div>
             
             <div class="flex justify-center space-x-8 mb-6">
@@ -338,7 +418,7 @@
             </div>
             
             <p class="text-gray-400">
-                © 2024 StreamPro. Todos os direitos reservados.
+                © 2024 CineFlix. Todos os direitos reservados.
             </p>
         </div>
     </footer>
@@ -548,7 +628,7 @@
             observer.observe(card);
         });
 
-        // Carousel functionality
+        // Carousel functionality - LÓGICA CORRIGIDA
         function initCarousel() {
             const carousel = document.getElementById('carousel');
             const row1 = document.getElementById('row1');
@@ -560,37 +640,38 @@
             let currentTranslate = 0;
             let prevTranslate = 0;
             let animationId;
+            let autoScrollSpeed = 1;
             
             // Duplicar itens para criar loop infinito
             function duplicateItems() {
-                const items1 = row1.children;
-                const items2 = row2.children;
+                const items1 = Array.from(row1.children);
+                const items2 = Array.from(row2.children);
                 
                 // Duplicar filmes
-                for (let i = 0; i < items1.length; i++) {
-                    const clone = items1[i].cloneNode(true);
+                items1.forEach(item => {
+                    const clone = item.cloneNode(true);
                     row1.appendChild(clone);
-                }
+                });
                 
                 // Duplicar séries
-                for (let i = 0; i < items2.length; i++) {
-                    const clone = items2[i].cloneNode(true);
+                items2.forEach(item => {
+                    const clone = item.cloneNode(true);
                     row2.appendChild(clone);
-                }
+                });
             }
             
-            // Chamar duplicação após um pequeno delay para garantir que os itens foram carregados
-            setTimeout(duplicateItems, 1000);
+            // Chamar duplicação após carregar os itens
+            setTimeout(duplicateItems, 500);
             
-            // Hover to start/stop animation
+            // Hover para pausar/continuar
             carousel.addEventListener('mouseenter', () => {
                 isHovering = true;
-                startAutoScroll();
+                stopAutoScroll();
             });
             
             carousel.addEventListener('mouseleave', () => {
                 isHovering = false;
-                stopAutoScroll();
+                startAutoScroll();
             });
             
             // Drag functionality
@@ -607,7 +688,7 @@
                 
                 const currentX = e.clientX;
                 const diff = currentX - startX;
-                const moveX = diff * 0.8; // Mais responsivo
+                const moveX = diff * 1.2; // Mais responsivo
                 
                 currentTranslate = prevTranslate + moveX;
                 
@@ -621,7 +702,7 @@
                 prevTranslate = currentTranslate;
                 carousel.style.cursor = 'grab';
                 
-                if (isHovering) {
+                if (!isHovering) {
                     startAutoScroll();
                 }
             });
@@ -638,13 +719,15 @@
                 if (animationId) return;
                 
                 let position = prevTranslate;
-                const speed = 0.8; // Mais rápido e fluido
                 
                 function animate() {
-                    position -= speed;
+                    position -= autoScrollSpeed;
                     
                     // Loop infinito - quando chegar ao final, volta ao início
-                    const totalWidth = row1.scrollWidth / 2; // Metade porque duplicamos os itens
+                    const itemWidth = 12 * 16 + 1.5 * 16; // 12rem + 1.5rem gap
+                    const totalItems = row1.children.length / 2; // Metade porque duplicamos
+                    const totalWidth = totalItems * itemWidth;
+                    
                     if (position < -totalWidth) {
                         position = 0;
                     }
@@ -665,12 +748,10 @@
                 }
             }
             
-            // Iniciar auto-scroll automaticamente após um delay
+            // Iniciar auto-scroll automaticamente
             setTimeout(() => {
-                if (!isHovering) {
-                    startAutoScroll();
-                }
-            }, 2000);
+                startAutoScroll();
+            }, 1000);
         }
 
         // Carregar o carrossel quando a página carregar
