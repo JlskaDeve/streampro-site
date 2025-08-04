@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamPro - IPTV Premium</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .gradient-text {
+            background: linear-gradient(45deg, #dc2626, #b91c1c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #111827 0%, #1f2937 50%, #374151 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .btn-primary {
+            background: linear-gradient(45deg, #dc2626, #b91c1c);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #b91c1c, #991b1b);
+            transform: scale(1.05);
+        }
+        
+        .carousel-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            cursor: grab;
+            user-select: none;
+        }
+        
+        .carousel-container:active {
+            cursor: grabbing;
+        }
+        
+        .carousel-row {
+            display: flex;
+            gap: 1.5rem;
+            transition: transform 0.1s ease-out;
+        }
+        
+        .carousel-item {
+            flex-shrink: 0;
+            width: 12rem;
+            height: 18rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .carousel-item:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="hero-gradient min-h-screen">
+    <!-- Header -->
+    <header class="bg-black/20 backdrop-blur-sm border-b border-white/10 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-play text-red-500 text-2xl"></i>
+                    <span class="text-white font-bold text-xl">StreamPro</span>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-white hover:text-red-400 transition-colors">Home</a>
+                    <a href="#planos" class="text-white hover:text-red-400 transition-colors">Planos</a>
+                    <a href="#canais" class="text-white hover:text-red-400 transition-colors">Canais</a>
+                    <a href="#suporte" class="text-white hover:text-red-400 transition-colors">Suporte</a>
+                </nav>
+                
+                <button class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors">
+                    TESTE GRÁTIS
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative py-20 px-4">
+        <div class="container mx-auto text-center">
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6">
+                <span class="gradient-text">
+                    CHEGA DE PAGAR CARO
+                </span>
+                <br />
+                <span class="text-white">POR POUCO CONTEÚDO</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                Mais de <span class="text-red-400 font-bold">2.000 canais</span> abertos e fechados, 
+                Netflix, Amazon Prime, Disney+, HBO Max, Globoplay e muito mais! 
+                Direto da sua TV ou celular em um único sistema!
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                <button class="btn-primary text-white px-8 py-4 rounded-lg font-bold text-lg shadow-lg">
+                    QUERO MEU ACESSO AGORA!
+                </button>
+                <button class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-all">
+                    VER DEMONSTRAÇÃO
+                </button>
+            </div>
+            
+            
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 card-hover">
+                    <i class="fas fa-tv text-red-400 text-3xl mx-auto mb-4 block"></i>
+                    <h3 class="text-white font-semibold mb-2">Smart TV</h3>
+                    <p class="text-gray-300 text-sm">Compatível com todas as marcas</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 card-hover">
+                    <i class="fas fa-mobile-alt text-red-400 text-3xl mx-auto mb-4 block"></i>
+                    <h3 class="text-white font-semibold mb-2">Celular</h3>
+                    <p class="text-gray-300 text-sm">Android e iOS</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 card-hover">
+                    <i class="fas fa-laptop text-red-400 text-3xl mx-auto mb-4 block"></i>
+                    <h3 class="text-white font-semibold mb-2">Computador</h3>
+                    <p class="text-gray-300 text-sm">Windows, Mac e Linux</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preços Section -->
+    <section id="planos" class="py-20 px-4 bg-black/20">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                Se fosse para pagar todas as plataformas
+            </h2>
+            <p class="text-2xl text-gray-300 mb-8">você pagaria <span class="text-red-400 font-bold text-3xl">R$ 537</span> por mês</p>
+            
+            <div class="bg-gradient-to-r from-red-600 to-red-800 rounded-2xl p-8 max-w-2xl mx-auto mb-12">
+                <h3 class="text-3xl font-bold text-white mb-4">Com a nossa plataforma</h3>
+                <p class="text-4xl font-bold text-white mb-6">você pagará apenas <span class="text-yellow-300">R$ 25,00</span> mês!!</p>
+                <button class="bg-white text-red-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors">
+                    QUERO MEU ACESSO!
+                </button>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 card-hover">
+                    <h4 class="text-white font-bold text-xl mb-2">Mensal</h4>
+                    <p class="text-3xl font-bold text-red-400 mb-2">R$ 25,00</p>
+                    <p class="text-gray-300 text-sm">primeiro mês</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 card-hover">
+                    <h4 class="text-white font-bold text-xl mb-2">Trimestral</h4>
+                    <p class="text-3xl font-bold text-red-400 mb-2">R$ 95,00</p>
+                    <p class="text-gray-300 text-sm">por 3 meses</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 card-hover">
+                    <h4 class="text-white font-bold text-xl mb-2">Semestral</h4>
+                    <p class="text-3xl font-bold text-red-400 mb-2">R$ 165,00</p>
+                    <p class="text-gray-300 text-sm">por 6 meses</p>
+                </div>
+                <div class="bg-gradient-to-r from-red-600 to-red-800 rounded-lg p-6 border border-red-400 card-hover">
+                    <h4 class="text-white font-bold text-xl mb-2">Anual</h4>
+                    <p class="text-3xl font-bold text-yellow-300 mb-2">R$ 300,00</p>
+                    <p class="text-white text-sm">Mais econômico!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Canais Section -->
+    <section id="canais" class="py-20 px-4">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-8">
+                FILMES E SÉRIES EM DESTAQUE
+            </h2>
+            <p class="text-xl text-gray-300 mb-12 max-w-3xl mx-auto">
+                De lançamentos a doramas e novelas turcas, aqui você encontra as mais aclamadas séries e filmes do momento, 
+                tudo que você procura em um único lugar!
+            </p>
+            
+            <!-- Auto-scrolling Carousel -->
+            <div class="relative overflow-hidden max-w-7xl mx-auto">
+                <div class="carousel-container" id="carousel">
+                    <!-- Row 1 - Filmes -->
+                    <div class="carousel-row" id="row1">
+                        <div class="carousel-item bg-gradient-to-br from-blue-400 to-blue-600 shadow-lg">
+                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
+                                <div class="p-4">
+                                    <h3 class="text-white font-bold text-lg">Godzilla Minus One</h3>
+                                    <p class="text-gray-300 text-sm">Filme • 2023</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-gradient-to-br from-yellow-500 to-orange-600 shadow-lg">
+                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
+                                <div class="p-4">
+                                    <h3 class="text-white font-bold text-lg">The Beekeeper</h3>
+                                    <p class="text-gray-300 text-sm">Filme • 2024</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg">
+                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
+                                <div class="p-4">
+                                    <h3 class="text-white font-bold text-lg">Meu Malvado Favorito</h3>
+                                    <p class="text-gray-300 text-sm">Animação • 2010</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-gradient-to-br from-orange-600 to-red-800 shadow-lg">
+                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
+                                <div class="p-4">
+                                    <h3 class="text-white font-bold text-lg">The Batman</h3>
+                                    <p class="text-gray-300 text-sm">Filme • 2022</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-gradient-to-br from-gray-700 to-black shadow-lg">
+                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
+                                <div class="p-4">
+                                    <h3 class="text-white font-bold text-lg">365 Dias</h3>
+                                    <p class="text-gray-300 text-sm">Filme • 2020</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-gradient-to-br from-purple-600 to-red-600 shadow-lg">
+                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
+                                <div class="p-4">
+                                    <h3 class="text-white font-bold text-lg">Shang-Chi</h3>
+                                    <p class="text-gray-300 text-sm">Filme • 2021</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-gradient-to-br from-blue-400 to-blue-600 shadow-lg">
+                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
+                                <div class="p-4">
+                                    <h3 class="text-white font-bold text-lg">Velozes e Furiosos</h3>
+                                    <p class="text-gray-300 text-sm">Filme • 2023</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-gradient-to-br from-green-500 to-green-700 shadow-lg">
+                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
+                                <div class="p-4">
+                                    <h3 class="text-white font-bold text-lg">Avatar 2</h3>
+                                    <p class="text-gray-300 text-sm">Filme • 2022</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-gradient-to-br from-red-600 to-red-800 shadow-lg">
+                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
+                                <div class="p-4">
+                                    <h3 class="text-white font-bold text-lg">Top Gun Maverick</h3>
+                                    <p class="text-gray-300 text-sm">Filme • 2022</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-gradient-to-br from-yellow-600 to-orange-700 shadow-lg">
+                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
+                                <div class="p-4">
+                                    <h3 class="text-white font-bold text-lg">Black Panther 2</h3>
+                                    <p class="text-gray-300 text-sm">Filme • 2022</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Row 2 - Séries -->
+                    <div class="carousel-row mt-6" id="row2">
+                        <div class="carousel-item bg-gradient-to-br from-gray-400 to-gray-600 shadow-lg">
+                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
+                                <div class="p-4">
+                                    <h3 class="text-white font-bold text-lg">Start-Up</h3>
+                                    <p class="text-gray-300 text-sm">Série • 2020</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-gradient-to-br from-blue-600 to-blue-800 shadow-lg">
+                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
+                                <div class="p-4">
+                                    <h3 class="text-white font-bold text-lg">Kara Sevda</h3>
+                                    <p class="text-gray-300 text-sm">Série • 2015</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-gradient-to-br from-yellow-600 to-orange-700 shadow-lg">
+                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
+                                <div class="p-4">
+                                    <h3 class="text-white font-bold text-lg">Cobra Kai</h3>
+                                    <p class="text-gray-300 text-sm">Série • 2018</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-gradient-to-br from-green-500 to-green-700 shadow-lg">
+                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
+                                <div class="p-4">
+                                    <h3 class="text-white font-bold text-lg">Bridgerton</h3>
+                                    <p class="text-gray-300 text-sm">Série • 2020</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-gradient-to-br from-red-600 to-red-800 shadow-lg">
+                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
+                                <div class="p-4">
+                                    <h3 class="text-white font-bold text-lg">Stranger Things 4</h3>
+                                    <p class="text-gray-300 text-sm">Série • 2022</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-gradient-to-br from-orange-600 to-red-700 shadow-lg">
+                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
+                                <div class="p-4">
+                                    <h3 class="text-white font-bold text-lg">House of the Dragon</h3>
+                                    <p class="text-gray-300 text-sm">Série • 2022</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-gradient-to-br from-red-700 to-red-900 shadow-lg">
+                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
+                                <div class="p-4">
+                                    <h3 class="text-white font-bold text-lg">The Boys</h3>
+                                    <p class="text-gray-300 text-sm">Série • 2019</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-gradient-to-br from-purple-600 to-purple-800 shadow-lg">
+                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
+                                <div class="p-4">
+                                    <h3 class="text-white font-bold text-lg">Wednesday</h3>
+                                    <p class="text-gray-300 text-sm">Série • 2022</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-gradient-to-br from-blue-500 to-blue-700 shadow-lg">
+                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
+                                <div class="p-4">
+                                    <h3 class="text-white font-bold text-lg">The Last of Us</h3>
+                                    <p class="text-gray-300 text-sm">Série • 2023</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-gradient-to-br from-gray-600 to-gray-800 shadow-lg">
+                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/80 flex items-end">
+                                <div class="p-4">
+                                    <h3 class="text-white font-bold text-lg">The Mandalorian</h3>
+                                    <p class="text-gray-300 text-sm">Série • 2019</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section class="py-20 px-4 bg-black/20">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold text-white mb-12">O que os clientes dizem sobre nós</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 card-hover">
+                    <div class="flex items-center justify-center mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        "Incrível! Tenho acesso a todos os canais que sempre quis. A qualidade é perfeita e o suporte é excelente!"
+                    </p>
+                    <p class="text-white font-semibold">- Maria Silva</p>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 card-hover">
+                    <div class="flex items-center justify-center mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        "Melhor investimento que fiz! Economizo muito dinheiro e tenho muito mais conteúdo do que antes."
+                    </p>
+                    <p class="text-white font-semibold">- João Santos</p>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 card-hover">
+                    <div class="flex items-center justify-center mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        "Super fácil de usar! Funciona perfeitamente na minha Smart TV e no celular. Recomendo para todos!"
+                    </p>
+                    <p class="text-white font-semibold">- Ana Costa</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="suporte" class="py-20 px-4">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-4xl font-bold text-white text-center mb-12">Perguntas Frequentes</h2>
+            
+            <div class="space-y-6">
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 card-hover">
+                    <h3 class="text-white font-semibold text-lg mb-3">Como funciona o teste grátis?</h3>
+                    <p class="text-gray-300">
+                        Oferecemos um teste gratuito de 24 horas para você experimentar nossa plataforma. 
+                        Basta se cadastrar e começar a assistir imediatamente!
+                    </p>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 card-hover">
+                    <h3 class="text-white font-semibold text-lg mb-3">Em quantos aparelhos posso usar?</h3>
+                    <p class="text-gray-300">
+                        Nossos planos permitem até 2 telas simultâneas*. Você pode assistir na TV, celular e computador.
+                        <br><span class="text-gray-400 text-sm">*Não é sempre as 2 telas simultâneas</span>
+                    </p>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 card-hover">
+                    <h3 class="text-white font-semibold text-lg mb-3">Como recebo o acesso?</h3>
+                    <p class="text-gray-300">
+                        Imediatamente após o pagamento! Enviamos por email o acesso e todos os tutoriais para configurar em qualquer aparelho.
+                    </p>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 card-hover">
+                    <h3 class="text-white font-semibold text-lg mb-3">Tem suporte técnico?</h3>
+                    <p class="text-gray-300">
+                        Sim! Nossa equipe está disponível 24/7 via WhatsApp para te ajudar com qualquer dúvida ou problema.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="py-20 px-4 bg-gradient-to-r from-red-600 to-red-800">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                Está com dúvidas sobre o produto?
+            </h2>
+            <p class="text-xl text-white mb-8">
+                Nossa equipe está pronta para te ajudar!
+            </p>
+            <button class="bg-white text-red-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors">
+                FALAR COM ATENDENTE
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black/40 py-12 px-4">
+        <div class="container mx-auto text-center">
+            <div class="flex items-center justify-center space-x-2 mb-6">
+                <i class="fas fa-play text-red-500 text-2xl"></i>
+                <span class="text-white font-bold text-xl">StreamPro</span>
+            </div>
+            
+            <div class="flex justify-center space-x-8 mb-6">
+                <a href="#" class="text-gray-300 hover:text-white transition-colors">Termos de Uso</a>
+                <a href="#" class="text-gray-300 hover:text-white transition-colors">Política de Privacidade</a>
+                <a href="#" class="text-gray-300 hover:text-white transition-colors">Suporte</a>
+            </div>
+            
+            <p class="text-gray-400">
+                © 2024 StreamPro. Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animação de entrada para elementos
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Aplicar animação aos cards
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Carousel functionality
+        const carousel = document.getElementById('carousel');
+        const row1 = document.getElementById('row1');
+        const row2 = document.getElementById('row2');
+        
+        let isHovering = false;
+        let isDragging = false;
+        let startX = 0;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+        let animationId;
+        
+        // Hover to start/stop animation
+        carousel.addEventListener('mouseenter', () => {
+            isHovering = true;
+            startAutoScroll();
+        });
+        
+        carousel.addEventListener('mouseleave', () => {
+            isHovering = false;
+            stopAutoScroll();
+        });
+        
+        // Drag functionality
+        carousel.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+            carousel.style.cursor = 'grabbing';
+            stopAutoScroll();
+        });
+        
+        carousel.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            
+            const currentX = e.clientX;
+            const diff = currentX - startX;
+            const moveX = diff * 0.5;
+            
+            currentTranslate = prevTranslate + moveX;
+            
+            // Limit movement
+            if (currentTranslate > 0) currentTranslate = 0;
+            if (currentTranslate < -1000) currentTranslate = -1000;
+            
+            row1.style.transform = `translateX(${currentTranslate}px)`;
+            row2.style.transform = `translateX(${currentTranslate}px)`;
+        });
+        
+        carousel.addEventListener('mouseup', () => {
+            isDragging = false;
+            prevTranslate = currentTranslate;
+            carousel.style.cursor = 'grab';
+            
+            if (isHovering) {
+                startAutoScroll();
+            }
+        });
+        
+        carousel.addEventListener('mouseleave', () => {
+            if (isDragging) {
+                isDragging = false;
+                prevTranslate = currentTranslate;
+                carousel.style.cursor = 'grab';
+            }
+        });
+        
+        function startAutoScroll() {
+            if (animationId) return;
+            
+            let position = prevTranslate;
+            const speed = 0.5; // pixels per frame - mais lento
+            
+            function animate() {
+                position -= speed;
+                
+                // Reset position when reaching the end
+                if (position < -1000) {
+                    position = 0;
+                }
+                
+                row1.style.transform = `translateX(${position}px)`;
+                row2.style.transform = `translateX(${position}px)`;
+                
+                animationId = requestAnimationFrame(animate);
+            }
+            
+            animate();
+        }
+        
+        function stopAutoScroll() {
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+                animationId = null;
+            }
+        }
+    </script>
+</body>
+</html> 
