@@ -18,11 +18,17 @@
         }
         
         .hero-section {
-            background-image: url('./netflix-background.jpg');
+            background-image: url('netflix-background.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             position: relative;
+            min-height: 100vh;
+        }
+        
+        /* Fallback caso a imagem não carregue */
+        .hero-section:not([style*="background-image"]) {
+            background: linear-gradient(135deg, #111827 0%, #1f2937 50%, #374151 100%);
         }
         
         .hero-section::before {
@@ -32,7 +38,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.7) 100%);
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.4) 100%);
             z-index: 1;
         }
         
@@ -778,8 +784,26 @@
             }, 1000);
         }
 
+        // Verificar se a imagem de background carregou
+        function checkBackgroundImage() {
+            const heroSection = document.querySelector('.hero-section');
+            const img = new Image();
+            img.onload = function() {
+                console.log('Imagem de background carregada com sucesso!');
+                heroSection.style.backgroundImage = 'url("netflix-background.jpg")';
+            };
+            img.onerror = function() {
+                console.error('Erro ao carregar imagem de background');
+                heroSection.style.background = 'linear-gradient(135deg, #111827 0%, #1f2937 50%, #374151 100%)';
+            };
+            img.src = 'netflix-background.jpg';
+        }
+
         // Carregar o carrossel quando a página carregar
-        document.addEventListener('DOMContentLoaded', loadCarousel);
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCarousel();
+            checkBackgroundImage();
+        });
     </script>
 </body>
 </html> 
